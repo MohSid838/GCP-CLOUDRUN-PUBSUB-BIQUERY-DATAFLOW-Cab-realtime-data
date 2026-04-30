@@ -1,0 +1,9 @@
+-- To build codebase image
+gcloud builds submit --tag gcr.io/project-163aacda-0f02-4c2d-96c/cab-idle:latest .
+
+-- To build Flex Template
+gcloud dataflow flex-template build \
+  gs://dataflow-templates-gds/templates/cab-idle.json \
+  --image=gcr.io/project-163aacda-0f02-4c2d-96c/cab-idle:latest \
+  --sdk-language=PYTHON \
+  --metadata-file=metadata.json
